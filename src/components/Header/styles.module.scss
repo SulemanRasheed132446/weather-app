@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+}
+
+.header div {
+  padding: 2%;
+}
+.header > div:nth-of-type(2) {
+  background-color: #110d3c;
+  width: 40%;
+}
+.header > div:nth-of-type(1) {
+  background-color: #f3fbff;
+  width: 60%;
+}
+
+input {
+  border: none;
+  font-size: 20px;
+  width: 80%;
+}
+input:focus {
+  outline: none;
+}
+
+.searchBox {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+  width: 50%;
+  align-items: center;
+}
