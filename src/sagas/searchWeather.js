@@ -1,5 +1,5 @@
 import {call, put, takeLatest, delay} from 'redux-saga/effects'
-import { weatherFailed, weatherLoading, weatherUpdate } from '../actions';
+import { getWeatherForecast, weatherFailed, weatherLoading, weatherUpdate } from '../actions';
 import { FETCH_WEATHER_DETAILS, WEATHER_LOADING, WEATHER_UPDATE } from '../actions/types'
 import weatherService from '../services/index'
 function* getWeatherDetails ({payload}) {
@@ -8,9 +8,11 @@ function* getWeatherDetails ({payload}) {
         yield delay(1000)
         const data = yield call(weatherService.getWeatherDataByCityName,payload.name);
         yield put(weatherUpdate(data))
+        yield put(getWeatherForecast(data.coord));
 
     }
     catch (err) {
+        console.log(err);
         yield put(weatherFailed())
     }
 }
