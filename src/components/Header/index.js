@@ -19,7 +19,9 @@ const Header = ({fetchWeatherByCity}) => {
 
                 </div>
             </div>
-            <div className="container"></div>
+            <div className="container ">
+                <h1 style={{textAlign: 'right', color: '#F3FBFF', fontWeight: 200, }}>Arbi <span style={{fontWeight:600}}>Weather</span></h1>
+            </div>
         </div>
     )
 }

@@ -3,25 +3,20 @@ import styles from "./styles.module.scss";
 import rain from "../../assets/rain.svg";
 import humidity from "../../assets/humidity.svg";
 import wind from "../../assets/wind.svg";
-import search from "../../assets/search.svg";
 import { connect } from 'react-redux';
 const WeatherBox = ({weatherData}) => {
   if(JSON.stringify(weatherData) == "{}") {
     return(
     <div style={{ color: "#110D3C" }}>
-      <h2 className={styles.title}>
+      <h2 className="title primary">
           Weather <span>Details</span>
       </h2>
-      <div className="flex-col justify-center align-center searchBox" >
-      <img src={search} width={180} />
-      <h2>Search a City ...</h2>
-
-      </div>
+      
     </div>)
   }
     return (
         <div style={{ color: "#110D3C" }}>
-        <h2 className={styles.title}>
+        <h2 className="title primary">
           Weather <span>Details</span>
         </h2>
         <div className="flex-col justify-between align-center container">

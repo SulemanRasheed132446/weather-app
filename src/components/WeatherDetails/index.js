@@ -6,7 +6,12 @@ const WeatherDetails = () => {
   return (
     <div className={styles.weatherDetails}>
         <WeatherBox/>
-    <div></div>
+    <div>
+    <h2 className="title secondary">
+          Weather <span>Forecast</span>
+      </h2>
+      
+    </div>
     </div>
   );
 };

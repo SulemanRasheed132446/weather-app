@@ -34,3 +34,20 @@ h1 , h2, p {
 .searchBox {
   height: 50vh;
 }
+
+.title {
+  font-size: 40px;
+  font-weight: 300;
+  word-spacing: 2;
+  margin-top: 0;
+}
+.title > span {
+  font-weight:  600;
+}
+
+.primary {
+  color:#110d3c
+} 
+.secondary {
+  color:#F3FBFF
+}
