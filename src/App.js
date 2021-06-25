@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import './App.scss';
 import Header from './components/Header';
 import WeatherDetails from './components/WeatherDetails';
+import SearchProgress from './components/SearchProgress';
 
 function App() {
   useEffect(() => {
@@ -11,6 +12,7 @@ function App() {
     <div >
      <Header />
      <WeatherDetails/>
+     <SearchProgress/>
     </div>
   );
 }

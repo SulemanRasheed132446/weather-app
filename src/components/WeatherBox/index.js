@@ -4,22 +4,18 @@ import rain from "../../assets/rain.svg";
 import humidity from "../../assets/humidity.svg";
 import wind from "../../assets/wind.svg";
 import { connect } from 'react-redux';
-const WeatherBox = ({weatherData}) => {
-  if(JSON.stringify(weatherData) == "{}") {
-    return(
-    <div style={{ color: "#110D3C" }}>
-      <h2 className="title primary">
-          Weather <span>Details</span>
-      </h2>
-      
-    </div>)
-  }
+import { CSSTransition } from "react-transition-group";
+const WeatherBox = ({weatherData, loading}) => {
+  
     return (
         <div style={{ color: "#110D3C" }}>
         <h2 className="title primary">
           Weather <span>Details</span>
         </h2>
-        <div className="flex-col justify-between align-center container">
+        
+
+        <CSSTransition timeout={300} unmountOnExit classNames="weather" in={JSON.stringify(weatherData) != "{}" ? !loading: false }>
+          <div className="flex-col justify-between align-center container">
           <div className="flex-row justify-between container align-center">
             <div>
               <img src={rain} width={80} />
@@ -38,13 +34,13 @@ const WeatherBox = ({weatherData}) => {
           </div>
           <div className="flex-row justify-between container">
             <p className="container">
-              Feels like: <span>{Math.round(weatherData.feels_like)}</span>
+              Feels like: <span>{Math.round(weatherData.feels_like)} &#8451;</span>
             </p>
             <p className="container">
-              Min Temp: <span> {Math.round(weatherData.temp_max)}</span>
+              Min Temp: <span> {Math.round(weatherData.temp_max)} &#8451;</span>
             </p>
             <p className="container">
-              Max Temp: <span>{Math.round(weatherData.temp_min)}</span>
+              Max Temp: <span>{Math.round(weatherData.temp_min)} &#8451;</span>
             </p>
           </div>
           <div className="flex-row justify-between container">
@@ -68,10 +64,12 @@ const WeatherBox = ({weatherData}) => {
               
             </div>
           </div>
-        </div>
+      </div>
+
+        </CSSTransition>
       </div>
       
     )
 }
-const mapStateToProps = ({weatherData}) => ({weatherData})
+const mapStateToProps = ({weatherData,loading}) => ({weatherData, loading})
 export default connect(mapStateToProps, null)(WeatherBox)
