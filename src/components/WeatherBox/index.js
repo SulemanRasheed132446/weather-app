@@ -3,9 +3,24 @@ import styles from "./styles.module.scss";
 import rain from "../../assets/rain.svg";
 import humidity from "../../assets/humidity.svg";
 import wind from "../../assets/wind.svg";
-const WeatherBox = () => {
+import search from "../../assets/search.svg";
+import { connect } from 'react-redux';
+const WeatherBox = ({weatherData}) => {
+  if(JSON.stringify(weatherData) == "{}") {
+    return(
+    <div style={{ color: "#110D3C" }}>
+      <h2 className={styles.title}>
+          Weather <span>Details</span>
+      </h2>
+      <div className="flex-col justify-center align-center searchBox" >
+      <img src={search} width={180} />
+      <h2>Search a City ...</h2>
+
+      </div>
+    </div>)
+  }
     return (
-        <div style={{ color: "black" }}>
+        <div style={{ color: "#110D3C" }}>
         <h2 className={styles.title}>
           Weather <span>Details</span>
         </h2>
@@ -20,21 +35,21 @@ const WeatherBox = () => {
             </div>
           </div>
           <div className={`flex-row align-center ${styles.temp}`}>
-            <h1 className="title">21</h1>
+            <h1 className="title">{Math.round(weatherData.temp)}</h1>
             <span>&#8451;</span>
           </div>
           <div>
-            <h1>Lahore</h1>
+            <h1>{weatherData.cityName}</h1>
           </div>
           <div className="flex-row justify-between container">
             <p className="container">
-              Feels like: <span>32</span>
+              Feels like: <span>{Math.round(weatherData.feels_like)}</span>
             </p>
             <p className="container">
-              Min Temp: <span> 45</span>
+              Min Temp: <span> {Math.round(weatherData.temp_max)}</span>
             </p>
             <p className="container">
-              Max Temp: <span>28</span>
+              Max Temp: <span>{Math.round(weatherData.temp_min)}</span>
             </p>
           </div>
           <div className="flex-row justify-between container">
@@ -44,7 +59,7 @@ const WeatherBox = () => {
               </div>
               <div className="container">
                 <h2>Wind</h2>
-                <p>13 mph</p>
+                <p>{weatherData.windSpeed} mph</p>
               </div>
             </div>
             <div className="flex-row justify-between">
@@ -53,7 +68,7 @@ const WeatherBox = () => {
                 </div>
                 <div className="container">
                   <h2>Humidity</h2>
-                  <p>46%</p>
+                  <p>{weatherData.humidity}%</p>
                 </div>
               
             </div>
@@ -63,5 +78,5 @@ const WeatherBox = () => {
       
     )
 }
-
-export default WeatherBox
+const mapStateToProps = ({weatherData}) => ({weatherData})
+export default connect(mapStateToProps, null)(WeatherBox)
