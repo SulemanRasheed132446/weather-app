@@ -1,15 +1,21 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import search from '../../assets/search.svg'
-const Header = () => {
+import { getWeatherByCity } from '../../actions';
+import { connect } from 'react-redux';
+const Header = ({fetchWeatherByCity}) => {
     const [cityName, setCityName] = useState('');
     const cityNameHandler = (e) => setCityName(e.target.value);
+
+    const onSearch = () => {
+        fetchWeatherByCity(cityName)
+    }
     return (
         <div className={styles.header}>
             <div className="container">
                 <div className={styles.searchBox}>
                     <input value={cityName} onChange={cityNameHandler}/>
-                    <img src={search} height={25}/>
+                    <img src={search} height={25} onClick={onSearch}/>
 
                 </div>
             </div>
@@ -17,5 +23,7 @@ const Header = () => {
         </div>
     )
 }
-
-export default Header
+const mapDispatchToProps = (dispatch) => ({
+    fetchWeatherByCity : (name) => dispatch(getWeatherByCity(name))
+})
+export default connect(null, mapDispatchToProps)(Header)

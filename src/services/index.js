@@ -12,7 +12,7 @@ const weatherService = {
         coord,
         name: cityName,
         main,
-        wind: { speed: windSpeed, gust: windGust },
+        wind: { speed: windSpeed },
         weather,
       } = data;
       return {
@@ -20,7 +20,6 @@ const weatherService = {
         cityName,
         ...main,
         windSpeed,
-        windGust,
         weather: weather[0],
       };
     } catch (err) {
