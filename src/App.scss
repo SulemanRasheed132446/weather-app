@@ -3,3 +3,28 @@
 .container {
   padding: 0% 3%;
 }
+h1 , h2, p {
+ margin:0
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between
+}
+
+.align-center {
+  align-items: center;
+}
+
+.container {
+  padding: 20px;
+}
+
