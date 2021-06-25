@@ -9,6 +9,8 @@ h1 , h2, p {
 
 .flex-row {
   display: flex;
+  flex-wrap: wrap;
+  align-content:center;
 }
 
 .flex-col {
