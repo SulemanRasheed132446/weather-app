@@ -7,8 +7,8 @@ import { curveBasis, curveBasisClosed } from '@vx/curve';
 
 import { AxisLeft, AxisBottom } from "@vx/axis";
 import { LinePath, AreaClosed } from "@vx/shape";
-const width = 600;
-const height = 500;
+const width = 500;
+const height = 300;
 const defaultMargin = { top: 40, right: 30, bottom: 50, left: 40 };
 const yMax = height - defaultMargin.top - defaultMargin.bottom;
 const xMax = width - defaultMargin.left - defaultMargin.right;
@@ -18,7 +18,7 @@ const ForecastBox = ({ forecastData, loading }) => {
     return [dateList[0], dateList[dateList.length - 1]];
   };
   const tempScale = scaleLinear({
-    domain: [0, 100],
+    domain: [Math.min(...forecastData.map(({min}) => min)) -10, Math.max(...forecastData.map(({max}) => max))+10],
     range: [yMax, 0],
   });
   const dateScale = scaleTime({
@@ -34,6 +34,7 @@ const ForecastBox = ({ forecastData, loading }) => {
       <h2 className="title secondary">
         Weather <span>Forecast</span>
       </h2>
+      <div className="flex-row justify-center container">
       <CSSTransition
         timeout={300}
         unmountOnExit
@@ -48,7 +49,6 @@ const ForecastBox = ({ forecastData, loading }) => {
             height={height}
             fill={"white"}
             rx={14}
-          
           />
             <Group left={defaultMargin.left} top={defaultMargin.top}>
               <AxisBottom
@@ -87,6 +87,7 @@ const ForecastBox = ({ forecastData, loading }) => {
             </Group>
         </svg>
       </CSSTransition>
+      </div>
     </div>
   );
 };
