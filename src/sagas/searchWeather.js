@@ -1,6 +1,6 @@
 import {call, put, takeLatest, delay} from 'redux-saga/effects'
 import { getWeatherForecast, weatherFailed, weatherLoading, weatherUpdate } from '../actions';
-import { FETCH_WEATHER_DETAILS, WEATHER_LOADING, WEATHER_UPDATE } from '../actions/types'
+import { FETCH_WEATHER_DETAILS} from '../actions/types'
 import weatherService from '../services/index'
 function* getWeatherDetails ({payload}) {
     try {

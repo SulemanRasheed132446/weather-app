@@ -1,14 +1,12 @@
 import React from "react";
-import ForecastBox from "../ForecastBox";
-import WeatherBox from "../WeatherBox";
-import styles from "./styles.scss";
+
+import "./styles.scss";
 import SearchBar from "../SearchBar";
 import Details from '../Details'
 import SearchProgress from "../SearchProgress";
 import {
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 const WeatherDetails = () => {
@@ -16,7 +14,6 @@ const WeatherDetails = () => {
     <div className="container weather-details">
         
         <SearchProgress/>
-
         <Switch >
           <Route path="/" exact>
           <SearchBar/>

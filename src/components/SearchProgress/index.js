@@ -20,7 +20,7 @@ const SearchProgress = ({ loading, weatherData }) => {
       >
         <CSSTransition in={loading} classNames="loading" timeout={300} unmountOnExit appear>
           <div className="justify-center flex-col align-center">
-          <img src={search} />
+          <img src={search} alt="search icon"/>
           <p>.....</p>
 
           </div>

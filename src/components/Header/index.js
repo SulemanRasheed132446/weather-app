@@ -7,13 +7,13 @@ import { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 const Header = ({toggleSearchBar, searched }) => {
-    useEffect(() => {toggleSearchBar()},[])
+    useEffect(() => {toggleSearchBar()},[toggleSearchBar])
     return (
         <div className="flex-row align-center justify-between container header">
             <h1>ARBI <span>WEATHER</span></h1>
             <CSSTransition in={searched} timeout={400} classNames="my-node" unmountOnExit>
 
-                <img src={search} onClick={toggleSearchBar}/>
+                <img src={search} onClick={toggleSearchBar} alt="search icon"/>
             </CSSTransition>
         </div>
     )

@@ -10,7 +10,6 @@ const SearchBar = ({searched}) => {
     const history= useHistory()
     const cityNameHandler =(e) => setCityName(e.target.value)
 
-    const clearCityName = () => setCityName('');
     const searchCity = () => history.push(`/city/${cityName}`);
     return (
         <div>
