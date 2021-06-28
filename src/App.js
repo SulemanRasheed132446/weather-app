@@ -4,6 +4,7 @@ import './App.scss';
 import Header from './components/Header';
 import WeatherDetails from './components/WeatherDetails';
 import SearchProgress from './components/SearchProgress';
+import WeatherBox from './components/WeatherBox';
 
 function App() {
   useEffect(() => {
@@ -12,7 +13,6 @@ function App() {
     <div >
      <Header />
      <WeatherDetails/>
-     <SearchProgress/>
     </div>
   );
 }

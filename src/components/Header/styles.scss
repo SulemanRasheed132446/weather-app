@@ -1,0 +1,17 @@
+@import "../../variables.scss";
+
+.header {
+  background-color: $primaryColor;
+  color: $textColor;
+  height: 5vh;
+  
+  img {
+    width: 3rem;
+  }
+  h1 {
+    font-weight: 200;
+    span {
+      font-weight: 600;
+    }
+   }
+}
