@@ -3,7 +3,12 @@ import wind from "../../assets/wind.svg";
 import humidity from "../../assets/humidity.svg";
 import "./styles.scss";
 import { connect } from "react-redux";
-const WeatherBox = ({ weatherData, loading }) => {
+import { useHistory } from "react-router-dom";
+const WeatherBox = ({ weatherData, loading, error }) => {
+    const history = useHistory()
+    if(error) {
+        history.push("/error")
+    }
   if (JSON.stringify(weatherData) === "{}" || loading) {
     return null;
   }
@@ -12,7 +17,7 @@ const WeatherBox = ({ weatherData, loading }) => {
         <div className="flex-row align-center justify-between weather-box container ">
           <div className="flex-col align-center">
             <div className="flex-row">
-              <img src={wind} width={70} alt="current weather"/>
+              <img src={"http://openweathermap.org/img/w/" + weatherData.weather.icon + ".png"} width={70} alt="current weather"/>
               <h1 className="title weather-detail">
                 <span>{Math.floor(weatherData.temp)}</span>&#8451;
               </h1>
@@ -37,7 +42,7 @@ const WeatherBox = ({ weatherData, loading }) => {
               </tbody>
             </table>
           </div>
-          <div>
+          <div className="wind-humidity">
             <div className="flex-row container">
               <img src={wind} width={50} alt="wind"/>
               <div className="weather-detail">
@@ -60,8 +65,9 @@ const WeatherBox = ({ weatherData, loading }) => {
       </div>
   );
 };
-const mapStateToProps = ({ weatherData, loading }) => ({
+const mapStateToProps = ({ weatherData, loading, error }) => ({
   weatherData,
   loading,
+  error,
 });
 export default connect(mapStateToProps, null)(WeatherBox);

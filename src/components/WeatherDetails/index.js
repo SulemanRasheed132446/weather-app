@@ -4,6 +4,7 @@ import "./styles.scss";
 import SearchBar from "../SearchBar";
 import Details from '../Details'
 import SearchProgress from "../SearchProgress";
+import InfoBox from "../InfoBox"
 import {
   Switch,
   Route,
@@ -17,10 +18,16 @@ const WeatherDetails = () => {
         <Switch >
           <Route path="/" exact>
           <SearchBar/>
+          <InfoBox/>
           </Route>
           <Route path="/city/:cityId">
           <SearchBar/>
            <Details/>
+          </Route>
+          <Route path="/error">
+          <SearchBar/>
+          <InfoBox/>
+
           </Route>
         </Switch>
     </div>

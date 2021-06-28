@@ -1,0 +1,11 @@
+.forecast-box {
+    width:70%;
+    height:50vh;
+}
+$breakpoint-tablet: 768px;
+@media (max-width: $breakpoint-tablet) {
+  
+  .forecast-box {
+      width:90%;
+  }
+}

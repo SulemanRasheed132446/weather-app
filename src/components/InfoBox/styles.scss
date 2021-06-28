@@ -1,0 +1,8 @@
+@import "../../variables.scss";
+.info-box {
+    height:60vh;
+    li {
+        color:$textColor;
+        text-transform: uppercase;
+    }
+}

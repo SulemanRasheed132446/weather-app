@@ -6,6 +6,7 @@ import { Group } from "@vx/group";
 import { AxisLeft, AxisBottom } from "@vx/axis";
 import { LinePath } from "@vx/shape";
 import { AreaClosed} from '@vx/shape';
+import './styles.scss'
 const margin = { top: 60, left: 60, right: 60, bottom: 60 };
 const Chart = ({ width, height, forecastData }) => {
   const yMax = useMemo(() => height - margin.top - margin.bottom, [height]);
@@ -97,7 +98,7 @@ const ForecastBox = ({ loading, forecastData }) => {
         <span>Weather</span> Forecast
       </h1>
       <div className="flex-row justify-center ">
-        <div style={{ height: "50vh", width: "70%" }}>
+        <div className="forecast-box">
           <ParentSize>
             {(parent) => <Chart {...parent} forecastData={forecastData} />}
           </ParentSize>

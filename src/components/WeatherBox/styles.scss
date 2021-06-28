@@ -19,3 +19,14 @@
     }
     
 }
+$breakpoint-tablet: 768px;
+@media (max-width: $breakpoint-tablet) {
+  .wind-humidity {
+      display:flex;
+      justify-content:space-between;
+  }
+  .weather-box {
+      flex-direction: column;
+      width:90%;
+  }
+}
