@@ -1,11 +1,11 @@
-import { FORECAST_UPDATE, WEATHER_FAILED, WEATHER_LOADING, WEATHER_UPDATE } from "../actions/types";
+import { FORECAST_UPDATE, TOGGLE_SEARCH, WEATHER_FAILED, WEATHER_LOADING, WEATHER_UPDATE } from "../actions/types";
 
 const initialState = {
   loading: false,
   error: null,
   weatherData: {},
   forecastData: [],
-  searched:false
+  searched:true,
 };
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -33,6 +33,11 @@ const reducer = (state = initialState, { type, payload }) => {
         loading: false,
         forecastData:payload.forecastData,
         searched: true
+      }
+    case TOGGLE_SEARCH:
+      return {
+        ...state,
+        searched: !state.searched
       }
     default:
       return state;

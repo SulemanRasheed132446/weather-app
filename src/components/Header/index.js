@@ -1,23 +1,27 @@
-import React, { useState } from 'react'
+import React from 'react'
 import search from '../../assets/search.svg'
 import './styles.scss'
-import { getWeatherByCity } from '../../actions';
+import {toggleSearch } from '../../actions';
 import { connect } from 'react-redux';
-const Header = ({fetchWeatherByCity}) => {
-    const [cityName, setCityName] = useState('');
-    const cityNameHandler = (e) => setCityName(e.target.value);
+import { useEffect } from 'react';
+import { CSSTransition } from 'react-transition-group';
 
-    const onSearch = () => {
-        fetchWeatherByCity(cityName)
-    }
+const Header = ({toggleSearchBar, searched }) => {
+    useEffect(() => {toggleSearchBar()},[])
     return (
         <div className="flex-row align-center justify-between container header">
             <h1>ARBI <span>WEATHER</span></h1>
-            <img src={search} />
+            <CSSTransition in={searched} timeout={400} classNames="my-node" unmountOnExit>
+
+                <img src={search} onClick={toggleSearchBar}/>
+            </CSSTransition>
         </div>
     )
 }
 const mapDispatchToProps = (dispatch) => ({
-    fetchWeatherByCity : (name) => dispatch(getWeatherByCity(name))
+    toggleSearchBar: () => dispatch(toggleSearch())
 })
-export default connect(null, mapDispatchToProps)(Header)
+const mapStateToProps = ({searched}) => ({
+    searched
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

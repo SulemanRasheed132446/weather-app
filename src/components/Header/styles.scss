@@ -2,8 +2,13 @@
 
 .header {
   background-color: $primaryColor;
+  position: fixed;
+  top: 0;
+  width: 98vw;
+  overflow: hidden;
   color: $textColor;
   height: 5vh;
+  z-index: 2;
   
   img {
     width: 3rem;

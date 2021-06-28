@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group';
 import search from '../../assets/search.svg'
-import close from '../../assets/close.svg'
 import './styles.scss'
 import { getWeatherByCity } from '../../actions';
 const SearchBar = ({searched, searchCityWeather}) => {

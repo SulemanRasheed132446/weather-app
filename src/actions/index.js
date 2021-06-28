@@ -1,4 +1,4 @@
-import { FETCH_WEATHER_DETAILS, FETCH_WEATHER_FORECAST, WEATHER_FAILED, WEATHER_LOADING, WEATHER_UPDATE , FORECAST_UPDATE} from "./types";
+import { FETCH_WEATHER_DETAILS, FETCH_WEATHER_FORECAST, WEATHER_FAILED, WEATHER_LOADING, WEATHER_UPDATE , FORECAST_UPDATE, TOGGLE_SEARCH} from "./types";
 
 export const weatherLoading = () => ({
     type:WEATHER_LOADING
@@ -37,4 +37,7 @@ export const updateForecast = (forecastData) => ({
     payload:{
         forecastData
     }
+})
+export const toggleSearch = () => ({
+    type:TOGGLE_SEARCH
 })
