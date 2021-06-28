@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group';
 import search from '../../assets/search.svg'
 import './styles.scss'
-import { getWeatherByCity } from '../../actions';
+import { useHistory } from 'react-router-dom';
 const SearchBar = ({searched, searchCityWeather}) => {
     const [cityName, setCityName] =  useState('')
+    const history= useHistory()
     const cityNameHandler =(e) => setCityName(e.target.value)
 
     const clearCityName = () => setCityName('');
-    const searchCity = () => searchCityWeather(cityName);
+    const searchCity = () => history.push(`/city/${cityName}`);
     return (
         <div>
         <CSSTransition in={!searched} timeout={400} classNames="my-node" unmountOnExit>
@@ -27,7 +28,5 @@ const SearchBar = ({searched, searchCityWeather}) => {
 const mapStateToProps =({searched}) => ({
     searched
 })
-const mapDispatchToProps = (dispatch) =>({
- searchCityWeather: (name) => dispatch(getWeatherByCity(name))
-})
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
+
+export default connect(mapStateToProps, null)(SearchBar)
