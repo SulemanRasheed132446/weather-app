@@ -29,7 +29,9 @@ h1 , h2, p {
 .container {
   padding: 20px;
 }
-
+.justify-evenly {
+  justify-content: space-evenly;
+}
 .justify-center {
   justify-content: center
 }

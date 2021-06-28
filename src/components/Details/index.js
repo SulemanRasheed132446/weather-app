@@ -2,34 +2,33 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getWeatherByCity } from "../../actions";
+import WeatherBox from "../WeatherBox";
 import "./styles.scss";
-const Details = ({ searchCity, searched }) => {
+import {CSSTransition} from 'react-transition-group'
+
+const Details = ({ searchCity, loading }) => {
   let { cityId } = useParams();
   useEffect(() => {
     searchCity(cityId);
   }, [cityId]);
-  if (!searched) {
-    return null;
-  }
+  
   return (
-    <div className="details">
-      <div className="flex-row justify-between align-center">
+      <CSSTransition in={loading} classNames="loading">
+        <div className="details">
         <div>
-          <div>
             <h1 className="title">
-              <span>Weather</span> Details
+            <span>Current</span> Weather
             </h1>
-          </div>
         </div>
-        <div>Forecast</div>
-      </div>
-    </div>
+        <WeatherBox />
+        </div>
+     </CSSTransition>
   );
 };
 const mapDispatchToProps = (dispatch) => ({
   searchCity: (name) => dispatch(getWeatherByCity(name)),
 });
-const mapStateToProps = ({ searched }) => ({
-  searched,
+const mapStateToProps = ({ loading }) => ({
+  loading,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Details);
