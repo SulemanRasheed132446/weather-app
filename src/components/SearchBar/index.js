@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group';
 import search from '../../assets/search.svg'
 import './styles.scss'
-import { useHistory } from 'react-router-dom';
-const SearchBar = ({searched, searchCityWeather}) => {
-    const [cityName, setCityName] =  useState('')
+import { useHistory, useParams } from 'react-router-dom';
+const SearchBar = ({searched}) => {
+    let {cityId} = useParams();
+    const [cityName, setCityName] =  useState(cityId ? cityId : '')
     const history= useHistory()
     const cityNameHandler =(e) => setCityName(e.target.value)
 

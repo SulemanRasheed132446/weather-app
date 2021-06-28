@@ -3,6 +3,7 @@ import ForecastBox from "../ForecastBox";
 import WeatherBox from "../WeatherBox";
 import styles from "./styles.scss";
 import SearchBar from "../SearchBar";
+import Details from '../Details'
 import SearchProgress from "../SearchProgress";
 import {
   Switch,
@@ -13,13 +14,16 @@ import {
 const WeatherDetails = () => {
   return (
     <div className="container weather-details">
-        <SearchBar/>
+        
+        <SearchProgress/>
+
         <Switch >
           <Route path="/" exact>
-            Hello
+          <SearchBar/>
           </Route>
           <Route path="/city/:cityId">
-           Hi
+          <SearchBar/>
+           <Details/>
           </Route>
         </Switch>
     </div>
