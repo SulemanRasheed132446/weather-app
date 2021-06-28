@@ -9,6 +9,7 @@
     "@vx/axis": "0.0.199",
     "@vx/curve": "0.0.199",
     "@vx/group": "0.0.199",
+    "@vx/responsive": "0.0.199",
     "@vx/scale": "0.0.199",
     "@vx/shape": "0.0.199",
     "axios": "^0.21.1",

@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group';
 import search from '../../assets/search.svg'
+import close from '../../assets/close.svg'
 import './styles.scss'
 import { useHistory, useParams } from 'react-router-dom';
-const SearchBar = ({searched}) => {
+import { toggleSearch } from '../../actions';
+const SearchBar = ({searched, toggleSearchBar}) => {
     let {cityId} = useParams();
     const [cityName, setCityName] =  useState(cityId ? cityId : '')
     const history= useHistory()
@@ -18,6 +20,8 @@ const SearchBar = ({searched}) => {
             <div className="search-bar flex-row align-center">
                 <input value={cityName} onChange={cityNameHandler}/>
                 <img src={search} alt="search icon" onClick={searchCity}/>
+                <img src={close} alt="search icon" onClick={toggleSearchBar}/>
+
             </div>
         </div>
       </CSSTransition>
@@ -28,5 +32,7 @@ const SearchBar = ({searched}) => {
 const mapStateToProps =({searched}) => ({
     searched
 })
-
-export default connect(mapStateToProps, null)(SearchBar)
+const mapDispatchToProps = (dispatch) => ({
+    toggleSearchBar: () => dispatch(toggleSearch())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)

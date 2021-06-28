@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getWeatherByCity } from "../../actions";
 import WeatherBox from "../WeatherBox";
+import ForecastBox from "../ForecastBox";
 import {CSSTransition} from 'react-transition-group'
 import "./styles.scss";
 const Details = ({ searchCity, searched }) => {
@@ -21,6 +22,7 @@ const Details = ({ searchCity, searched }) => {
         </h1>
       </div>
       <WeatherBox />
+     <ForecastBox />
      </div>
       </CSSTransition>
   );

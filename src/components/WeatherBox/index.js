@@ -4,7 +4,7 @@ import humidity from "../../assets/humidity.svg";
 import "./styles.scss";
 import { connect } from "react-redux";
 const WeatherBox = ({ weatherData, loading }) => {
-  if (JSON.stringify(weatherData) === "{}") {
+  if (JSON.stringify(weatherData) === "{}" || loading) {
     return null;
   }
   return (
