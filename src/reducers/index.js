@@ -5,6 +5,7 @@ const initialState = {
   error: null,
   weatherData: {},
   forecastData: [],
+  searched:false
 };
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -30,7 +31,8 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        forecastData:payload.forecastData
+        forecastData:payload.forecastData,
+        searched: true
       }
     default:
       return state;
