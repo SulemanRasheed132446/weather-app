@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import './App.scss';
 import Header from './components/Header';
 import WeatherDetails from './components/WeatherDetails';
-
+//Deploying on heroku
 import {
   BrowserRouter as Router,
   
