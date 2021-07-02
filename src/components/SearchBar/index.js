@@ -12,7 +12,7 @@ const SearchBar = ({searched, toggleSearchBar}) => {
     const history= useHistory()
     const cityNameHandler =(e) => setCityName(e.target.value)
 
-    const searchCity = () => history.push(`/city/${cityName}`);
+    const searchCity = () => history.push(`/city?name=${cityName}`);
     return (
         <div>
         <CSSTransition in={!searched} timeout={400} classNames="my-node" unmountOnExit>
@@ -29,8 +29,8 @@ const SearchBar = ({searched, toggleSearchBar}) => {
         
     )
 }
-const mapStateToProps =({searched}) => ({
-    searched
+const mapStateToProps =(state) => ({
+    searched:state.weather.searched
 })
 const mapDispatchToProps = (dispatch) => ({
     toggleSearchBar: () => dispatch(toggleSearch())

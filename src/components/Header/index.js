@@ -21,7 +21,7 @@ const Header = ({toggleSearchBar, searched }) => {
 const mapDispatchToProps = (dispatch) => ({
     toggleSearchBar: () => dispatch(toggleSearch())
 })
-const mapStateToProps = ({searched}) => ({
-    searched
+const mapStateToProps = (state) => ({
+    searched:state.weather.searched
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

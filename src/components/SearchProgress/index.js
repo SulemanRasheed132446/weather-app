@@ -30,8 +30,8 @@ const SearchProgress = ({ loading, weatherData }) => {
  
   
 };
-const mapStateToProps = ({ loading, weatherData }) => ({
-  loading,
-  weatherData,
+const mapStateToProps = (state) => ({
+  loading:state.weather.loading,
+  weatherData:state.weather.weatherData,
 });
 export default connect(mapStateToProps)(SearchProgress);

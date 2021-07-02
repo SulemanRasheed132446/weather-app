@@ -34,10 +34,7 @@ const Chart = ({ width, height, forecastData }) => {
     ],
     range: [yMax, 0],
   });
-  console.log([
-    getMinTemp(forecastData.map(({ min }) => min)),
-    getMaxTemp(forecastData.map(({ max }) => max)),
-  ]);
+  
   const dateScale = scaleTime({
     domain: getMaxMinDate(forecastData.map(({ date }) => date)),
     range: [0, xMax],
@@ -107,8 +104,8 @@ const ForecastBox = ({ loading, forecastData }) => {
     </div>
   );
 };
-const mapStateToProps = ({ loading, forecastData }) => ({
-  loading,
-  forecastData,
+const mapStateToProps = (state) => ({
+  loading: state.weather.loading,
+  forecastData: state.forecast.forecastData,
 });
 export default connect(mapStateToProps)(ForecastBox);

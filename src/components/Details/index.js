@@ -1,17 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { connect } from "react-redux";
-import { useParams } from "react-router-dom";
+import {   useLocation } from "react-router-dom";
 import { getWeatherByCity } from "../../actions";
 import WeatherBox from "../WeatherBox";
 import ForecastBox from "../ForecastBox";
 import {CSSTransition} from 'react-transition-group'
 import "./styles.scss";
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 const Details = ({ searchCity, searched }) => {
-  let { cityId } = useParams();
+  let query = useQuery(searchCity);
+  const cityName = useMemo(() => query.get('name'), [query.get('name')])
   useEffect(() => {
-    searchCity(cityId);
-  }, [cityId, searchCity]);
+    if(cityName) {
+      searchCity(cityName);
+
+    }
+  }, [cityName, searchCity]);
   
+  if(!cityName) {
+    return null;
+  }
   return (
       <CSSTransition in={searched} timeout={300} classNames="">
 
@@ -30,7 +41,7 @@ const Details = ({ searchCity, searched }) => {
 const mapDispatchToProps = (dispatch) => ({
   searchCity: (name) => dispatch(getWeatherByCity(name)),
 });
-const mapStateToProps = ({ searched }) => ({
-  searched,
+const mapStateToProps = (state) => ({
+  searched: state.weather.searched,
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Details);

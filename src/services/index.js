@@ -1,13 +1,11 @@
 import axios from "axios";
-import { restructureForecastData } from "../utils";
-const appId = "5d1417c13f72a60daae2d7b905a3ab80";
+const appId = process.env.REACT_APP_WEATHER_API_KEY;
 const weatherService = {
   getWeatherDataByCityName: async (name) => {
     try {
       const { data } = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${appId}&units=metric`
       );
-      console.log(data);
       const {
         coord,
         name: cityName,
@@ -33,7 +31,7 @@ const weatherService = {
       } = await axios.get(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${appId}&units=metric`
       );
-      return restructureForecastData(daily);
+      return daily;
     } catch (err) {
         throw new Error("Invalid coordinates");
     }

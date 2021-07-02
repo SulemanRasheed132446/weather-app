@@ -20,7 +20,7 @@ const WeatherDetails = () => {
           <SearchBar/>
           <InfoBox/>
           </Route>
-          <Route path="/city/:cityId">
+          <Route path="/city">
           <SearchBar/>
            <Details/>
           </Route>

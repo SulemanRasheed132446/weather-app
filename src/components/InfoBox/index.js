@@ -21,7 +21,7 @@ const InfoBox = () => {
         </div>
     )
 }
-const mapStateToProps = ({weatherData, loading}) => ({
-    weatherData,loading
+const mapStateToProps = (state) => ({
+    weatherData:state.weather.weatherData,loading: state.weather.loading
 })
 export default connect(mapStateToProps, null)(InfoBox)

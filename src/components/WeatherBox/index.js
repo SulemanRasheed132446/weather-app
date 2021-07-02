@@ -4,12 +4,13 @@ import humidity from "../../assets/humidity.svg";
 import "./styles.scss";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { isEmptyObject } from "../../utils";
 const WeatherBox = ({ weatherData, loading, error }) => {
     const history = useHistory()
     if(error) {
         history.push("/error")
     }
-  if (JSON.stringify(weatherData) === "{}" || loading) {
+  if (isEmptyObject(weatherData)|| loading) {
     return null;
   }
   return (
@@ -65,9 +66,9 @@ const WeatherBox = ({ weatherData, loading, error }) => {
       </div>
   );
 };
-const mapStateToProps = ({ weatherData, loading, error }) => ({
-  weatherData,
-  loading,
-  error,
+const mapStateToProps = (state) => ({
+  weatherData: state.weather.weatherData,
+  loading: state.weather.loading,
+  error: state.weather.error,
 });
 export default connect(mapStateToProps, null)(WeatherBox);
