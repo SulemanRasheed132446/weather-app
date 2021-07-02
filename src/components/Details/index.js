@@ -12,6 +12,7 @@ function useQuery() {
 
 const Details = ({ searchCity, searched }) => {
   let query = useQuery(searchCity);
+  // eslint-disable-next-line 
   const cityName = useMemo(() => query.get('name'), [query.get('name')])
   useEffect(() => {
     if(cityName) {
@@ -19,6 +20,7 @@ const Details = ({ searchCity, searched }) => {
 
     }
   }, [cityName, searchCity]);
+
   
   if(!cityName) {
     return null;
