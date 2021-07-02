@@ -1,0 +1,8 @@
+@import "../../assets/variables.scss";
+
+.weather-details {
+    padding-top: 9vh;
+    color: $textColor;
+    min-height: 100vh;
+    background-color:$secondaryColor
+}

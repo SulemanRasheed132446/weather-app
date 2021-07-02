@@ -1,0 +1,32 @@
+@import "../../assets/variables.scss";
+
+.weather-box {
+    background-color: $primaryColor;
+    box-shadow: 0 1rem 1rem $boxShadowColor, 0.5rem 0rem 1rem $boxShadowColor;
+    border-radius: 1rem;
+    transition:all 300ms;
+    width:70%;
+    .weather-detail {
+        padding: 0rem 1rem
+    }
+    td:nth-of-type(2) {
+        font-weight: 600;
+        padding: 0.3rem 0rem
+    }
+    &:hover {
+       opacity:0.9
+
+    }
+    
+}
+$breakpoint-tablet: 768px;
+@media (max-width: $breakpoint-tablet) {
+  .wind-humidity {
+      display:flex;
+      justify-content:space-between;
+  }
+  .weather-box {
+      flex-direction: column;
+      width:90%;
+  }
+}
